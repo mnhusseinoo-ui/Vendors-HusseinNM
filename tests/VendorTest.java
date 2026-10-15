@@ -18,6 +18,13 @@ class VendorTest {
         assertEquals(20,JVend.getBalance());
 
     }
+    @Test
+    void BuyingItem()
+    {
+       JVend.addMoney(5);
+       JVend.select("Candy");
+       assertEquals(3.75,JVend.getBalance());
+    }
 
     @Test
     void NegativeNum()
