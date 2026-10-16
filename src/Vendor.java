@@ -63,6 +63,13 @@ class Vending {
     int getPurchases(String name) {
         return Stock.get(name).timesPurchased;
     }
+    void setDescription(String name, String description) {
+        Stock.get(name).description = description;
+    }
+
+    String getDescription(String name) {
+        return Stock.get(name).description;
+    }
 
     void select(String name) {
         if (Stock.containsKey(name)) {

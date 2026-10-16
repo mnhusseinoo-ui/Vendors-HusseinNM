@@ -94,4 +94,9 @@ class VendorTest {
         JVend.select("Candy");
         assertEquals(2, JVend.getPurchases("Candy"));
     }
+    @Test
+    void itemDescription() {
+        JVend.setDescription("Candy", "Chocolate bar with caramel");
+        assertEquals("Chocolate bar with caramel", JVend.getDescription("Candy"));
+    }
 }
