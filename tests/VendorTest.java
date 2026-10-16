@@ -46,4 +46,17 @@ class VendorTest {
         JVend.restock("Chips", 5, 1.00);
         assertEquals(5, JVend.getStock("Chips"));
     }
+
+    @Test
+    void emptyInventory() {
+        JVend.addMoney(20.00);
+        for (int i = 0; i < 10; i++) {
+            JVend.select("Candy");
+        }
+        assertEquals(0, JVend.getStock("Candy"));
+
+        JVend.select("Candy");
+        assertEquals(0, JVend.getStock("Candy"));
+        assertEquals(7.50, JVend.getBalance());
+    }
 }
