@@ -87,4 +87,11 @@ class VendorTest {
         assertEquals(5, system.vendors.size());
         system.printAll();
     }
+    @Test
+    void trackPurchases() {
+        JVend.addMoney(10.00);
+        JVend.select("Candy");
+        JVend.select("Candy");
+        assertEquals(2, JVend.getPurchases("Candy"));
+    }
 }

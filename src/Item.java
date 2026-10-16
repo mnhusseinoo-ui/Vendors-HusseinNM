@@ -1,6 +1,7 @@
 class Item {
     double price;
     int stock;
+    int timesPurchased = 0;
 
     Item(double price, int numPieces) {
         this.price = price;
@@ -13,8 +14,6 @@ class Item {
 
     void purchase(int amount) {
         this.stock = this.stock - amount;
+        this.timesPurchased = this.timesPurchased + amount;
     }
-
-
 }
-

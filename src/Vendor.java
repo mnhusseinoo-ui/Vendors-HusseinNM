@@ -60,6 +60,9 @@ class Vending {
             System.out.println(name + ": $" + item.price + " (" + item.stock + " left)");
         }
     }
+    int getPurchases(String name) {
+        return Stock.get(name).timesPurchased;
+    }
 
     void select(String name) {
         if (Stock.containsKey(name)) {
