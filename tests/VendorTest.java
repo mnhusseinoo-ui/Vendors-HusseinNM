@@ -59,4 +59,10 @@ class VendorTest {
         assertEquals(0, JVend.getStock("Candy"));
         assertEquals(7.50, JVend.getBalance());
     }
+
+    @Test
+    void renameItem() {
+        JVend.renameItem("Candy", "Chocolate");
+        assertEquals(10, JVend.getStock("Chocolate"));
+    }
 }

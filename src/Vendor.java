@@ -44,7 +44,12 @@ class Vending {
             Stock.put(name, new Item(price, amount));
         }
     }
-
+    void renameItem(String oldName, String newName) {
+        if (Stock.containsKey(oldName)) {
+            Item item = Stock.remove(oldName);
+            Stock.put(newName, item);
+        }
+    }
     int getStock(String name) {
         return Stock.get(name).stock;
     }
