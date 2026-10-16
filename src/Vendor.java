@@ -70,6 +70,17 @@ class Vending {
     String getDescription(String name) {
         return Stock.get(name).description;
     }
+    void applyDiscount(String name, double percent) {
+        if (percent <= 0 || percent > 100) {
+            return;
+        }
+        Item item = Stock.get(name);
+        item.price = item.price * (1 - percent / 100);
+    }
+
+    double getPrice(String name) {
+        return Stock.get(name).price;
+    }
 
     void select(String name) {
         if (Stock.containsKey(name)) {

@@ -99,4 +99,9 @@ class VendorTest {
         JVend.setDescription("Candy", "Chocolate bar with caramel");
         assertEquals("Chocolate bar with caramel", JVend.getDescription("Candy"));
     }
+    @Test
+    void applyDiscount() {
+        JVend.applyDiscount("Candy", 20);
+        assertEquals(1.00, JVend.getPrice("Candy"), 0.001);
+    }
 }
