@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
 
+
 /**
  * Class for a Vending Machine.  Contains a hashtable mapping item names to item data, as
  * well as the current balance of money that has been deposited into the machine.
@@ -52,6 +53,13 @@ class Vending {
     }
     int getStock(String name) {
         return Stock.get(name).stock;
+    }
+    void removeItem(String name) {
+        Stock.remove(name);
+    }
+
+    boolean hasItem(String name) {
+        return Stock.containsKey(name);
     }
 
     /** attempt to purchase named item.  Message returned if
