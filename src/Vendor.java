@@ -34,6 +34,21 @@ class Vending {
             this.balance = this.balance + amt;
     }
 
+    void restock(String name, int amount, double price) {
+        if (amount <= 0) {
+            return;
+        }
+        if (Stock.containsKey(name)) {
+            Stock.get(name).restock(amount);
+        } else {
+            Stock.put(name, new Item(price, amount));
+        }
+    }
+
+    int getStock(String name) {
+        return Stock.get(name).stock;
+    }
+
     /** attempt to purchase named item.  Message returned if
      * the balance isn't sufficient to cover the item cost.
      *
@@ -45,7 +60,10 @@ class Vending {
             if (balance >= item.price) {
                 item.purchase(1);
                 this.balance = this.balance - item.price;
+
+
             }
+
             else
                 System.out.println("Gimme more money");
         }

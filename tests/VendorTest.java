@@ -35,9 +35,15 @@ class VendorTest {
 
 
 
+    @Test
+    void restockExistingItem() {
+        JVend.restock("Candy", 5, 0);
+        assertEquals(15, JVend.getStock("Candy"));
+    }
 
-     @Test
-    void addition() {
-        assertEquals(2, 1 + 1);
-}
+    @Test
+    void restockNewItem() {
+        JVend.restock("Chips", 5, 1.00);
+        assertEquals(5, JVend.getStock("Chips"));
+    }
 }
