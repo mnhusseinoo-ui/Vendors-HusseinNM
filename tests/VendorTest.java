@@ -72,4 +72,19 @@ class VendorTest {
         JVend.removeItem("Gum");
         assertFalse(JVend.hasItem("Gum"));
     }
+
+    @Test
+    void vendorsAreSeparate() {
+        Vending other = new Vending(10, 10);
+        JVend.restock("Candy", 5, 0);
+        assertEquals(15, JVend.getStock("Candy"));
+        assertEquals(10, other.getStock("Candy"));
+    }
+
+    @Test
+    void fiveVendors() {
+        VendorSystem system = new VendorSystem();
+        assertEquals(5, system.vendors.size());
+        system.printAll();
+    }
 }

@@ -1,13 +1,7 @@
 import java.util.HashMap;
 
-
-
-/**
- * Class for a Vending Machine.  Contains a hashtable mapping item names to item data, as
- * well as the current balance of money that has been deposited into the machine.
- */
 class Vending {
-    private static HashMap<String, Item> Stock = new HashMap<String,Item>();
+    private HashMap<String, Item> Stock = new HashMap<String, Item>();
     private double balance;
 
     Vending(int numCandy, int numGum) {
@@ -16,23 +10,18 @@ class Vending {
         this.balance = 0;
     }
 
-
-    /** resets the Balance to 0 */
-    void resetBalance () {
+    void resetBalance() {
         this.balance = 0;
     }
 
-    /** returns the current balance */
-    double getBalance () {
+    double getBalance() {
         return this.balance;
     }
 
-    /** adds money to the machine's balance
-     * @param amt how much money to add
-     * */
-    void addMoney (double amt) {
-        if (amt > 0)
+    void addMoney(double amt) {
+        if (amt > 0) {
             this.balance = this.balance + amt;
+        }
     }
 
     void restock(String name, int amount, double price) {
@@ -45,46 +34,47 @@ class Vending {
             Stock.put(name, new Item(price, amount));
         }
     }
+
     void renameItem(String oldName, String newName) {
         if (Stock.containsKey(oldName)) {
             Item item = Stock.remove(oldName);
             Stock.put(newName, item);
         }
     }
-    int getStock(String name) {
-        return Stock.get(name).stock;
-    }
+
     void removeItem(String name) {
         Stock.remove(name);
+    }
+
+    int getStock(String name) {
+        return Stock.get(name).stock;
     }
 
     boolean hasItem(String name) {
         return Stock.containsKey(name);
     }
 
-    /** attempt to purchase named item.  Message returned if
-     * the balance isn't sufficient to cover the item cost.
-     *
-     * @param name The name of the item to purchase ("Candy" or "Gum")
-     */
-    void select (String name) {
+    void printInventory() {
+        for (String name : Stock.keySet()) {
+            Item item = Stock.get(name);
+            System.out.println(name + ": $" + item.price + " (" + item.stock + " left)");
+        }
+    }
+
+    void select(String name) {
         if (Stock.containsKey(name)) {
             Item item = Stock.get(name);
             if (item.stock > 0 && balance >= item.price) {
                 item.purchase(1);
                 this.balance = this.balance - item.price;
-
-
-            }
-
-            else
+            } else {
                 System.out.println("Gimme more money");
+            }
+        } else {
+            System.out.println("Sorry, don't know that item");
         }
-        else System.out.println("Sorry, don't know that item");
     }
-
 }
 
 class Examples {
 }
-
