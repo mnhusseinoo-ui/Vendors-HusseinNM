@@ -81,6 +81,13 @@ class Vending {
     double getPrice(String name) {
         return Stock.get(name).price;
     }
+    void markBestseller(String name) {
+        Stock.get(name).bestseller = true;
+    }
+
+    boolean isBestseller(String name) {
+        return Stock.get(name).bestseller;
+    }
 
     void select(String name) {
         if (Stock.containsKey(name)) {

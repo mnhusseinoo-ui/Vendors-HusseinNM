@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -103,5 +104,11 @@ class VendorTest {
     void applyDiscount() {
         JVend.applyDiscount("Candy", 20);
         assertEquals(1.00, JVend.getPrice("Candy"), 0.001);
+    }
+    @Test
+    void markBestseller() {
+        JVend.markBestseller("Candy");
+        assertTrue(JVend.isBestseller("Candy"));
+        assertFalse(JVend.isBestseller("Gum"));
     }
 }

@@ -3,6 +3,7 @@ class Item {
     int stock;
     int timesPurchased = 0;
     String description = "";
+    boolean bestseller = false;
 
     Item(double price, int numPieces) {
         this.price = price;
